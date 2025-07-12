@@ -1,0 +1,16 @@
+volumes:
+  modules_data:
+  wrangler_data:
+
+name: autorag-chatbot-ex
+services:
+  app:
+    build: .
+    volumes:
+      - ..:/usr/src
+      - modules_data:/usr/src/node_modules
+      - wrangler_data:/home/vscode/.config/.wrangler
+    command: tail -f /dev/null
+    working_dir: /usr/src
+    ports:
+      - 5173:5173
